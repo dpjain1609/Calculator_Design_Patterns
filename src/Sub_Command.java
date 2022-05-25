@@ -1,7 +1,7 @@
 public class Sub_Command extends Binary_Command{
 
     Sub_Command(){
-
+        super(1);
     }
 
     @Override

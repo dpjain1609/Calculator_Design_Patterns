@@ -1,31 +1,39 @@
+import java.util.Scanner;
+
 public class CommandStack implements Strategy{
 
     @Override
-    public void algorithm() {
+    public void input() {
 
+        boolean keepGoing = true;
+        Scanner scan = new Scanner(System.in);
+
+        while(keepGoing){
+            System.out.println("Enter expression : ");
+            String expression = scan.nextLine();
+
+            if(expression.equalsIgnoreCase("quit")){
+                keepGoing = false;
+                continue;
+            }
+
+            String parse = parse_expression(expression);
+            int result = evaluate_expression(parse);
+            System.out.println("Result = " + result);
+        }
     }
 
-    public String infix_to_postfix(){
+    @Override
+    public String parse_expression(String expression) {
 
 
 
         return null;
     }
 
-    int operatorPrecedence(String token){
-        if(token == "SQRT" || token == "CBRT"){
-            return 4;
-        }
-
-        else if(token == "*" || token == "/"){
-            return 3;
-        }
-
-        else if(token == "+" || token == "-"){
-            return 2;
-        }
-
-        return -1;
+    @Override
+    public int evaluate_expression(String parse) {
+        return 0;
     }
 
 }

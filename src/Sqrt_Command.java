@@ -1,7 +1,7 @@
 public class Sqrt_Command extends Unary_Command{
 
     Sqrt_Command(){
-
+        super(3);
     }
 
     @Override

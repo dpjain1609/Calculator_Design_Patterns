@@ -1,3 +1,5 @@
 public interface Strategy {
-    public void algorithm();
+    public void input();
+    public String parse_expression(String expression);
+    public int evaluate_expression(String parse);
 }

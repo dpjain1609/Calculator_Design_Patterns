@@ -1,7 +1,7 @@
 public class Multi_Command extends Binary_Command{
 
     Multi_Command(){
-
+        super(2);
     }
 
     @Override

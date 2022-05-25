@@ -1,7 +1,7 @@
 public class Add_Command extends Binary_Command{
 
     Add_Command(){
-
+        super(1);
     }
 
     @Override

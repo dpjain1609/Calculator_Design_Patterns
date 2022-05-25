@@ -1,7 +1,17 @@
 import java.util.Stack;
 
-public interface Operator_Command extends Command {
+public abstract class Operator_Command implements Command {
 
-    void execute(Stack<Float> stack);
+    private final int precedence;
+
+    Operator_Command(int precedence){
+        this.precedence = precedence;
+    }
+
+    public int getPrecedence(){
+        return this.precedence;
+    }
+
+    public abstract void execute(Stack<Float> stack);
 
 }

@@ -1,7 +1,7 @@
 public class Div_Command extends Binary_Command{
 
     Div_Command(){
-
+        super(2);
     }
 
     @Override
