@@ -1,10 +1,14 @@
+package Postfix_Evaluator;
+
+import Interfaces.Strategy;
+
 import java.util.Scanner;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
-public class CommandStack implements Strategy{
+public class CommandStack implements Strategy {
 
-    CommandStack(){
+    public CommandStack(){
         input();
     }
 
