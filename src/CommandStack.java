@@ -4,6 +4,10 @@ import java.util.StringTokenizer;
 
 public class CommandStack implements Strategy{
 
+    CommandStack(){
+        input();
+    }
+
     @Override
     public void input() {
 
@@ -20,7 +24,7 @@ public class CommandStack implements Strategy{
             }
 
             String parse = parse_expression(expression);
-            int result = evaluate_expression(parse);
+            float result = evaluate_expression(parse);
             System.out.println("Result = " + result);
         }
     }
@@ -64,7 +68,7 @@ public class CommandStack implements Strategy{
             }
 
             else {
-                throw new IllegalStateException();
+                throw new IllegalStateException("Invalid Character");
             }
         }
 
@@ -77,11 +81,51 @@ public class CommandStack implements Strategy{
     }
 
     @Override
-    public int evaluate_expression(String parse) {
+    public float evaluate_expression(String parse) {
 
-        int result;
+        StringTokenizer tokenizer = new StringTokenizer(parse);
+        String token;
+        Stack<Float> stack = new Stack<>();
+        Command cmd = null;
 
-        return result;
+        Stack_Expr_Command_Factory factory = new Stack_Expr_Command_Factory();
+
+        while(tokenizer.hasMoreTokens()){
+            token = tokenizer.nextToken();
+
+            if(isFloat(token)){
+                cmd = factory.create_number_command(Float.parseFloat(token));
+            }
+
+            else if(token.equals("+")){
+                cmd = factory.create_add_command();
+            }
+
+            else if(token.equals("-")){
+                cmd = factory.create_sub_command();
+            }
+
+            else if(token.equals("*")){
+                cmd = factory.create_multi_command();
+            }
+
+            else if(token.equals("/")){
+                cmd = factory.create_div_command();
+            }
+
+            else if(token.equals("SQRT")){
+                cmd = factory.create_sqrt_command();
+            }
+
+            else if(token.equals("CBRT")){
+                cmd = factory.create_cbrt_command();
+            }
+
+            cmd.execute(stack);
+
+        }
+
+        return stack.peek();
 
     }
 
